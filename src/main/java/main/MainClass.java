@@ -21,7 +21,7 @@ public class MainClass {
 		
 		sentences.forEach(s -> {
 			System.out.println("Syntactic analysis for \"" + s + "\"");
-			boolean success = parser.parse(s);
+			boolean success = parser.parse(s + "$");
 			
 			System.out.println("\nSyntactic analysis for \"" + s + "\": " + (success ? "SUCCESS" : "FAIL"));
 			System.out.println();

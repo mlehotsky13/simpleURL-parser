@@ -49,7 +49,7 @@ public class Parser {
 				} else {
 					if (topOfStack.equals(token.getData()) || Pattern.matches(topOfStack, token.getData())) {
 						if (i == tokens.size() - 1)
-							break;
+							continue;
 						token = tokens.get(++i);
 					} else {
 						throw new ParsingException(token, "No matching terminal found.");
