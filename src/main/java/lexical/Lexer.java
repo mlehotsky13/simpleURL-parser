@@ -7,9 +7,9 @@ import java.util.regex.Pattern;
 
 public class Lexer {
 	public static enum TokenType {
-		PROTOCOL("http://|ftp://|telnet://|mailto::"),
-		SEPARATOR("[?|:|.|/|+|@]"),
-		LITERAL("\\w"),
+		PROTOCOL("http://|ftp://|telnet://|mailto::"), //
+		SEPARATOR("[?|:|.|/|+|@]"), //
+		LITERAL("\\w"), //
 		UNDEFINED("[^?|:|.|/|+|@|A-Za-z]");
 
 		private String pattern;
@@ -27,7 +27,7 @@ public class Lexer {
 			this.type = type;
 			this.data = data;
 		}
-		
+
 		public String getData() {
 			return this.data;
 		}
@@ -45,23 +45,23 @@ public class Lexer {
 		for (TokenType tokenType : TokenType.values())
 			tokenPatternsBuffer.append(String.format("|(?<%s>%s)", tokenType.name(), tokenType.pattern));
 		Pattern tokenPatterns = Pattern.compile(new String(tokenPatternsBuffer.substring(1)));
-		
+
 		Matcher matcher = tokenPatterns.matcher(input);
-		  while (matcher.find()) {
-		    if (matcher.group(TokenType.PROTOCOL.name()) != null) {
-		      tokens.add(new Token(TokenType.PROTOCOL, matcher.group(TokenType.PROTOCOL.name())));
-		      continue;
-		    } else if (matcher.group(TokenType.SEPARATOR.name()) != null) {
-		      tokens.add(new Token(TokenType.SEPARATOR, matcher.group(TokenType.SEPARATOR.name())));
-		      continue;
-		    } else if (matcher.group(TokenType.LITERAL.name()) != null) {
-		      tokens.add(new Token(TokenType.LITERAL, matcher.group(TokenType.LITERAL.name())));
-		      continue;
-		    } else if (matcher.group(TokenType.UNDEFINED.name()) != null) {
-		      tokens.add(new Token(TokenType.UNDEFINED, matcher.group(TokenType.UNDEFINED.name())));
-		    }
-		  }
-		  
+		while (matcher.find()) {
+			if (matcher.group(TokenType.PROTOCOL.name()) != null) {
+				tokens.add(new Token(TokenType.PROTOCOL, matcher.group(TokenType.PROTOCOL.name())));
+				continue;
+			} else if (matcher.group(TokenType.SEPARATOR.name()) != null) {
+				tokens.add(new Token(TokenType.SEPARATOR, matcher.group(TokenType.SEPARATOR.name())));
+				continue;
+			} else if (matcher.group(TokenType.LITERAL.name()) != null) {
+				tokens.add(new Token(TokenType.LITERAL, matcher.group(TokenType.LITERAL.name())));
+				continue;
+			} else if (matcher.group(TokenType.UNDEFINED.name()) != null) {
+				tokens.add(new Token(TokenType.UNDEFINED, matcher.group(TokenType.UNDEFINED.name())));
+			}
+		}
+
 		return tokens;
 	}
 }

@@ -6,7 +6,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Stack;
 import java.util.regex.Pattern;
-
 import exception.ParsingException;
 import lexical.Lexer;
 import lexical.Lexer.Token;
@@ -38,8 +37,7 @@ public class Parser {
 				if (!isTerminal(topOfStack)) {
 					String mapToken = getMapToken(token);
 					if (table.get(topOfStack).get(mapToken) == null) {
-						throw new ParsingException(token,
-								"Undefined state for [" + topOfStack + ", " + mapToken + "].");
+						throw new ParsingException(token, "Undefined state for [" + topOfStack + ", " + mapToken + "].");
 					} else {
 						List<String> listOfRhs = rules.get(table.get(topOfStack).get(mapToken));
 						for (int j = listOfRhs.size() - 1; j >= 0; j--) {

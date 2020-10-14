@@ -1,6 +1,6 @@
-build/
 bin/
-gradle/
-settings/
-*.bat
+build/
+.gradle/
+.settings/
+.project
 .classpath
