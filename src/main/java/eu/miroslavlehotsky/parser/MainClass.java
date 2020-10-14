@@ -1,10 +1,10 @@
-package main;
+package eu.miroslavlehotsky.parser;
 
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
-import lexical.Lexer;
-import syntactic.Parser;
+import eu.miroslavlehotsky.parser.lexical.Lexer;
+import eu.miroslavlehotsky.parser.syntactic.Parser;
 
 public class MainClass {
 	public static void main(String[] args) throws Exception {

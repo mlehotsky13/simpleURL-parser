@@ -1,4 +1,4 @@
-package lexical;
+package eu.miroslavlehotsky.parser.lexical;
 
 import java.util.ArrayList;
 import java.util.List;

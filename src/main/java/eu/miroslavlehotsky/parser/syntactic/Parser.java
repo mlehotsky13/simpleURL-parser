@@ -1,4 +1,4 @@
-package syntactic;
+package eu.miroslavlehotsky.parser.syntactic;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -6,9 +6,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.Stack;
 import java.util.regex.Pattern;
-import exception.ParsingException;
-import lexical.Lexer;
-import lexical.Lexer.Token;
+import eu.miroslavlehotsky.parser.exception.ParsingException;
+import eu.miroslavlehotsky.parser.lexical.Lexer;
+import eu.miroslavlehotsky.parser.lexical.Lexer.Token;
 
 public class Parser {
 	Map<Integer, List<String>> rules;
@@ -117,34 +117,34 @@ public class Parser {
 	private Map<String, Map<String, Integer>> setUpTable() {
 		Map<String, Map<String, Integer>> table = new HashMap<String, Map<String, Integer>>();
 		
-		table.put("_G1", new HashMap<String, Integer>(){{ put("?", 20); put("/", 20); put(":", 19); put("$", 20); }});
-		table.put("_A", new HashMap<String, Integer>(){{ put("http://", 1); put("ftp://", 2); put("telnet://", 3); put("mailto::", 4); }});
-		table.put("_B", new HashMap<String, Integer>(){{ put("http://", 5); }});
-		table.put("_C", new HashMap<String, Integer>(){{ put("ftp://", 11); }});
-		table.put("_D", new HashMap<String, Integer>(){{ put("telnet://", 12); }});
-		table.put("_E", new HashMap<String, Integer>(){{ put("mailto::", 13); }});
-		table.put("_F", new HashMap<String, Integer>(){{ put("alpha", 15); put("digit", 15);}});
-		table.put("_G", new HashMap<String, Integer>(){{ put("alpha", 18); put("digit", 18);}});
-		table.put("_H", new HashMap<String, Integer>(){{ put("alpha", 21); put("digit", 21);}});
-		table.put("_I", new HashMap<String, Integer>(){{ put("digit", 24); }});
-		table.put("_J", new HashMap<String, Integer>(){{ put("/", 25); put("alpha", 25); put("digit", 25);}});
-		table.put("_K", new HashMap<String, Integer>(){{ put("alpha", 28); put("digit", 28);}});
-		table.put("_L", new HashMap<String, Integer>(){{ put("alpha", 31); put("digit", 31);}});
-		table.put("_M", new HashMap<String, Integer>(){{ put("alpha", 32); put("digit", 32);}});
-		table.put("_N", new HashMap<String, Integer>(){{ put("?", 34); put("/", 34); put("alpha", 33); put("digit", 33); put("$", 34); }});
-		table.put("_O", new HashMap<String, Integer>(){{ put("alpha", 35); put("digit", 35);}});
-		table.put("_P", new HashMap<String, Integer>(){{ put("alpha", 38); put("digit", 39);}});
-		table.put("_Q", new HashMap<String, Integer>(){{ put("digit", 40); }});
-		table.put("_R", new HashMap<String, Integer>(){{ put("alpha", 43); }});
-		table.put("_S", new HashMap<String, Integer>(){{ put("digit", 44); }});
-		table.put("_J1", new HashMap<String, Integer>(){{ put("?", 27); put("/", 26); put("$", 27); }});
-		table.put("_H1", new HashMap<String, Integer>(){{ put("?", 23); put("/", 23); put(":", 23); put(".", 22); put("$", 23); }});
-		table.put("_F1", new HashMap<String, Integer>(){{ put("@", 16); put(":", 17); }});
-		table.put("_B2", new HashMap<String, Integer>(){{ put("?", 9); put("$", 10); }});
-		table.put("_B1", new HashMap<String, Integer>(){{ put("?", 6); put("/", 7); put("$", 8); }});
-		table.put("_Q1", new HashMap<String, Integer>(){{ put("?", 42); put("/", 42); put("digit", 41); put("$", 42); }});
-		table.put("_O1", new HashMap<String, Integer>(){{ put("?", 37); put("/", 37); put("@", 37); put(":", 37); put(".", 37); put("+", 37); put("alpha", 36); put("digit", 36); put("$", 37); }});
-		table.put("_K1", new HashMap<String, Integer>(){{ put("+", 29); put("$", 30); }});
+		table.put("_G1", new HashMap<>(){{ put("?", 20); put("/", 20); put(":", 19); put("$", 20); }});
+		table.put("_A", new HashMap<>(){{ put("http://", 1); put("ftp://", 2); put("telnet://", 3); put("mailto::", 4); }});
+		table.put("_B", new HashMap<>(){{ put("http://", 5); }});
+		table.put("_C", new HashMap<>(){{ put("ftp://", 11); }});
+		table.put("_D", new HashMap<>(){{ put("telnet://", 12); }});
+		table.put("_E", new HashMap<>(){{ put("mailto::", 13); }});
+		table.put("_F", new HashMap<>(){{ put("alpha", 15); put("digit", 15);}});
+		table.put("_G", new HashMap<>(){{ put("alpha", 18); put("digit", 18);}});
+		table.put("_H", new HashMap<>(){{ put("alpha", 21); put("digit", 21);}});
+		table.put("_I", new HashMap<>(){{ put("digit", 24); }});
+		table.put("_J", new HashMap<>(){{ put("/", 25); put("alpha", 25); put("digit", 25);}});
+		table.put("_K", new HashMap<>(){{ put("alpha", 28); put("digit", 28);}});
+		table.put("_L", new HashMap<>(){{ put("alpha", 31); put("digit", 31);}});
+		table.put("_M", new HashMap<>(){{ put("alpha", 32); put("digit", 32);}});
+		table.put("_N", new HashMap<>(){{ put("?", 34); put("/", 34); put("alpha", 33); put("digit", 33); put("$", 34); }});
+		table.put("_O", new HashMap<>(){{ put("alpha", 35); put("digit", 35);}});
+		table.put("_P", new HashMap<>(){{ put("alpha", 38); put("digit", 39);}});
+		table.put("_Q", new HashMap<>(){{ put("digit", 40); }});
+		table.put("_R", new HashMap<>(){{ put("alpha", 43); }});
+		table.put("_S", new HashMap<>(){{ put("digit", 44); }});
+		table.put("_J1", new HashMap<>(){{ put("?", 27); put("/", 26); put("$", 27); }});
+		table.put("_H1", new HashMap<>(){{ put("?", 23); put("/", 23); put(":", 23); put(".", 22); put("$", 23); }});
+		table.put("_F1", new HashMap<>(){{ put("@", 16); put(":", 17); }});
+		table.put("_B2", new HashMap<>(){{ put("?", 9); put("$", 10); }});
+		table.put("_B1", new HashMap<>(){{ put("?", 6); put("/", 7); put("$", 8); }});
+		table.put("_Q1", new HashMap<>(){{ put("?", 42); put("/", 42); put("digit", 41); put("$", 42); }});
+		table.put("_O1", new HashMap<>(){{ put("?", 37); put("/", 37); put("@", 37); put(":", 37); put(".", 37); put("+", 37); put("alpha", 36); put("digit", 36); put("$", 37); }});
+		table.put("_K1", new HashMap<>(){{ put("+", 29); put("$", 30); }});
 		
 		return table;
 	}
